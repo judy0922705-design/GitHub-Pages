@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Plant Friend v3</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+<div id="app">
+
+    <!-- 🌿📱 首頁 -->
+    <section id="homePage" class="page active">
+        <h1 class="app-title">Plant Friend</h1>
+        <p class="app-subtitle">你的智慧室內植物照護助理 🌱</p>
+
+        <div class="feature-box">
+            <h3>📌 我們可以幫你做什麼？</h3>
+            <ul>
+                <li>📷 植物狀態檢測與建議</li>
+                <li>🪴 即時健康儀表板（健康度／濕度／光照／溫度）</li>
+                <li>📘 植物日記與心情紀錄</li>
+                <li>💧 澆水紀錄與照護歷史</li>
+                <li>📅 月曆化植物照護狀況</li>
+            </ul>
+        </div>
+
+        <h2 class="page-title">我的植物</h2>
+
+        <div class="carousel-container">
+            <div class="carousel" id="plantCarousel">
+
+                <!-- 植物卡片（原樣保留） -->
+                <div class="plant-card" data-id="0">
+                    <img src="https://i.imgur.com/vj6Yw0N.jpeg" class="plant-photo" />
+                    <div class="plant-info">
+                        <h3>白鶴芋 Peace Lily</h3>
+                        <!-- stats 原樣 -->
+                    </div>
+                </div>
+
+                <div class="plant-card" data-id="1">
+                    <img src="https://i.imgur.com/cXjUzGw.jpeg" class="plant-photo" />
+                    <div class="plant-info">
+                        <h3>流蘇蕨 Asparagus Fern</h3>
+                    </div>
+                </div>
+
+                <div class="plant-card" data-id="2">
+                    <img src="https://i.imgur.com/U7VxO8O.jpeg" class="plant-photo" />
+                    <div class="plant-info">
+                        <h3>吊蘭 Spider Plant</h3>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 🌿🌡 詳細頁 -->
+    <section id="detailPage" class="page">
+        <button class="back-btn" onclick="goToPage('homePage')">← 返回</button>
+        <img id="detailPhoto" class="detail-photo" />
+        <h2 id="detailName"></h2>
+        <div id="detailStats"></div>
+        <div class="detail-actions">
+            <button onclick="goToPage('analysisPage')">AI 分析</button>
+            <button onclick="goToPage('diaryPage')">日記</button>
+        </div>
+    </section>
+
+    <!-- 🌿📅 日記頁 -->
+    <section id="diaryPage" class="page">
+        <button class="back-btn" onclick="goToPage('detailPage')">← 返回</button>
+        <h2>植物日記（月曆）</h2>
+        <p class="diary-hint">點選日期可以編輯當天的心情與是否澆水。</p>
+        <div id="calendarGrid" class="calendar-grid"></div>
+
+        <div id="diaryPopup" class="popup hidden">
+            <div class="popup-box">
+                <h3 id="popupDateLabel">日期</h3>
+                <label>心情：</label>
+                <select id="moodSelect">
+                    <option value="🙂">🙂 開心</option>
+                    <option value="😐">😐 普通</option>
+                    <option value="😢">😢 難過</option>
+                    <option value="😡">😡 生氣</option>
+                </select>
+                <label><input type="checkbox" id="waterCheck"> 有澆水</label>
+                <div class="popup-btns">
+                    <button onclick="saveDiary()">儲存</button>
+                    <button onclick="closePopup()">取消</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 🌿🤖 AI 分析頁 -->
+    <section id="analysisPage" class="page">
+        <button class="back-btn" onclick="goToPage('detailPage')">← 返回</button>
+
+        <h2>AI 分析中心</h2>
+
+        <!-- ✅ 新增：照片上傳 -->
+        <input
+            type="file"
+            accept="image/*"
+            id="plantUpload"
+            onchange="handleImageUpload(event)"
+        />
+
+        <img id="analysisPhoto" class="analysis-photo" />
+        <div id="analysisResult" class="analysis-box">請選擇植物開始分析</div>
+        <button onclick="runAI()">開始 AI 分析</button>
+    </section>
+
+</div>
+
+<nav class="bottom-nav">
+    <button onclick="goToPage('homePage')">首頁</button>
+    <button onclick="goToPage('detailPage')">詳細</button>
+    <button onclick="goToPage('diaryPage')">日記</button>
+    <button onclick="goToPage('analysisPage')">AI分析</button>
+</nav>
+
+<script src="script.js"></script>
+</body>
+</html>

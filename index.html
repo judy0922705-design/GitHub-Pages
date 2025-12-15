@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Plant Friend v3</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+<div id="app">
+
+    <!-- 🌿📱 首頁（封面＋功能介紹） -->
+    <section id="homePage" class="page active">
+        <h1 class="app-title">Plant Friend</h1>
+        <p class="app-subtitle">用一張照片，了解植物的狀態 🌱</p>
+
+        <div class="feature-grid">
+            <div class="feature-card" onclick="openIntro('analysis')">
+                <h3>📷 植物影像分析</h3>
+                <p>上傳植物照片，分析健康與生長狀態。</p>
+            </div>
+
+            <div class="feature-card" onclick="openIntro('care')">
+                <h3>🪴 照護建議</h3>
+                <p>依分析結果，提供合適的照護方向。</p>
+            </div>
+
+            <div class="feature-card" onclick="openIntro('data')">
+                <h3>📊 狀態數據</h3>
+                <p>以數值方式呈現植物目前狀況。</p>
+            </div>
+        </div>
+
+        <button class="primary-btn" onclick="goToPage('analysisPage')">
+            開始分析植物 →
+        </button>
+    </section>
+
+    <!-- 🌿📅 日記頁（保留＋留言） -->
+    <section id="diaryPage" class="page">
+        <button class="back-btn" onclick="goToPage('homePage')">← 返回</button>
+
+        <h2>植物日記（月曆）</h2>
+        <p class="diary-hint">點選日期可以編輯當天的心情、是否澆水與留言。</p>
+
+        <div id="calendarGrid" class="calendar-grid"></div>
+
+        <div id="diaryPopup" class="popup hidden">
+            <div class="popup-box">
+                <h3 id="popupDateLabel">日期</h3>
+
+                <label>心情：</label>
+                <select id="moodSelect">
+                    <option value="🙂">🙂 開心</option>
+                    <option value="😐">😐 普通</option>
+                    <option value="😢">😢 難過</option>
+                    <option value="😡">😡 生氣</option>
+                </select>
+
+                <label style="margin-top:8px;">
+                    <input type="checkbox" id="waterCheck"> 有澆水
+                </label>
+
+                <!-- ✅ 新增：留言欄位 -->
+                <label style="margin-top:10px;">留言：</label>
+                <textarea
+                    id="commentInput"
+                    placeholder="記錄今天植物的狀況、你的觀察或想說的話..."
+                    style="width:100%; height:70px; border-radius:8px; padding:6px;"
+                ></textarea>
+
+                <div class="popup-btns">
+                    <button onclick="saveDiary()">儲存</button>
+                    <button onclick="closePopup()">取消</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 🌿🤖 AI 分析頁（只保留上傳與數據呈現） -->
+    <section id="analysisPage" class="page">
+        <button class="back-btn" onclick="goToPage('homePage')">← 返回</button>
+
+        <h2>AI 分析中心</h2>
+
+        <input
+            type="file"
+            accept="image/*"
+            id="plantUpload"
+            onchange="handleImageUpload(event)"
+        />
+
+        <img id="analysisPhoto" class="analysis-photo" />
+        <div id="analysisResult" class="analysis-box">請上傳植物照片並開始分析</div>
+
+        <!-- ✅ 上傳圖片分析後的狀態數據 -->
+        <div id="uploadStats" class="analysis-box" style="display:none;">
+            <div class="stat-row">
+                <span>健康度</span>
+                <div class="bar">
+                    <div class="bar-fill health" id="uHealth"></div>
+                </div>
+                <span id="uHealthVal"></span>
+            </div>
+
+            <div class="stat-row">
+                <span>濕度</span>
+                <div class="bar">
+                    <div class="bar-fill moisture" id="uMoisture"></div>
+                </div>
+                <span id="uMoistureVal"></span>
+            </div>
+
+            <div class="stat-row">
+                <span>光照</span>
+                <div class="bar">
+                    <div class="bar-fill light" id="uLight"></div>
+                </div>
+                <span id="uLightVal"></span>
+            </div>
+
+            <div class="stat-row">
+                <span>溫度</span>
+                <div class="bar">
+                    <div class="bar-fill temp" id="uTemp"></div>
+                </div>
+                <span id="uTempVal"></span>
+            </div>
+        </div>
+
+        <button onclick="runAI()">開始 AI 分析</button>
+    </section>
+
+    <!-- 📘 功能介紹彈出視窗 -->
+    <div id="introModal" class="modal hidden">
+        <div class="modal-box">
+            <h3 id="introTitle"></h3>
+            <p id="introContent"></p>
+            <button onclick="closeIntro()">關閉</button>
+        </div>
+    </div>
+
+</div>
+
+<!-- 🌿 底部導航列（移除「詳細」） -->
+<nav class="bottom-nav">
+    <button onclick="goToPage('homePage')">首頁</button>
+    <button onclick="goToPage('analysisPage')">AI分析</button>
+    <button onclick="goToPage('diaryPage')">日記</button>
+</nav>
+
+<script src="script.js"></script>
+</body>
+</html>

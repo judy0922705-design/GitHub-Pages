@@ -1,4 +1,4 @@
-const images = document.querySelectorAll("figure img, .main-img");
+const images = document.querySelectorAll(".main-image, figure img");
 
 images.forEach((img) => {
   img.addEventListener("click", () => {
@@ -7,6 +7,7 @@ images.forEach((img) => {
 
     const bigImg = document.createElement("img");
     bigImg.src = img.src;
+    bigImg.alt = img.alt;
 
     overlay.appendChild(bigImg);
     document.body.appendChild(overlay);

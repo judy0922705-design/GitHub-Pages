@@ -1,355 +1,203 @@
-/* ================================
-   🌿 全域設定
-==================================*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-    margin: 0;
-    font-family: "Noto Sans TC", sans-serif;
-    background: #f8f8f8;
-    color: #333;
+  font-family: "Noto Sans TC", "Microsoft JhengHei", Arial, sans-serif;
+  background: #f7f9fc;
+  color: #333;
+  line-height: 1.9;
 }
 
-/* 頁面切換控制 */
-.page {
-    display: none;
-    padding: 20px;
-    padding-bottom: 80px;
+/* Header */
+header {
+  background: #ffffff;
+  padding: 20px 8%;
+  border-bottom: 1px solid #e5e5e5;
 }
 
-.page.active {
-    display: block;
+.logo {
+  color: #e60012;
+  font-size: 24px;
+  font-weight: bold;
 }
 
-/* App 標題區 */
-.app-title {
-    font-size: 28px;
-    font-weight: 800;
-    margin: 10px 5px 0;
+/* Breadcrumb */
+.breadcrumb {
+  max-width: 1000px;
+  margin: 30px auto 10px;
+  padding: 0 20px;
+  font-size: 14px;
+  color: #777;
 }
 
-.app-subtitle {
-    font-size: 14px;
-    color: #666;
-    margin: 0 5px 15px;
+.breadcrumb a {
+  color: #777;
+  text-decoration: none;
 }
 
-/* ================================
-   🌿 首頁原本功能介紹盒（保留）
-==================================*/
-.feature-box {
-    background: #ffffff;
-    margin: 0 5px 15px;
-    padding: 12px 14px;
-    border-radius: 14px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
-    font-size: 14px;
+.breadcrumb span {
+  margin: 0 6px;
 }
 
-.feature-box h3 {
-    margin: 0 0 8px;
-    font-size: 16px;
+/* Article */
+.article {
+  max-width: 900px;
+  margin: 0 auto 60px;
+  padding: 40px 50px;
+  background: #ffffff;
+  border-radius: 18px;
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.08);
 }
 
-.feature-box ul {
-    margin: 0;
-    padding-left: 18px;
+.category {
+  display: inline-block;
+  color: #ffffff;
+  background: #e60012;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 14px;
+  margin-bottom: 18px;
 }
 
-.feature-box li {
-    margin: 4px 0;
+.article h1 {
+  font-size: 34px;
+  line-height: 1.4;
+  color: #222;
+  margin-bottom: 12px;
 }
 
-.page-title {
-    font-size: 22px;
-    font-weight: 700;
-    padding-left: 5px;
-    margin: 10px 0 12px;
+.date {
+  color: #888;
+  font-size: 14px;
+  margin-bottom: 28px;
 }
 
-/* ================================
-   🌿 首頁：卡片輪播區（保留）
-==================================*/
-.carousel-container {
-    width: 100%;
-    overflow: hidden;
+.cover {
+  width: 100%;
+  border-radius: 16px;
+  margin-bottom: 35px;
 }
 
-.carousel {
-    display: flex;
-    gap: 20px;
-    padding: 10px;
-    overflow-x: scroll;
-    scroll-snap-type: x mandatory;
+section {
+  margin-bottom: 45px;
 }
 
-.plant-card {
-    width: 85%;
-    min-width: 85%;
-    background: #ffffff;
-    border-radius: 18px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-    scroll-snap-align: center;
-    cursor: pointer;
-    transition: 0.3s;
+.article h2 {
+  font-size: 26px;
+  color: #e60012;
+  margin-bottom: 16px;
+  border-left: 6px solid #e60012;
+  padding-left: 12px;
 }
 
-.plant-card:hover {
-    transform: scale(1.02);
+.article p {
+  font-size: 17px;
+  margin-bottom: 18px;
 }
 
-.plant-photo {
-    width: 100%;
-    height: 230px;
-    object-fit: cover;
-    border-radius: 18px 18px 0 0;
+.article img {
+  width: 100%;
+  border-radius: 14px;
+  margin: 25px 0;
+  cursor: pointer;
 }
 
-.plant-info {
-    padding: 15px;
+/* Button */
+.button {
+  display: inline-block;
+  background: #e60012;
+  color: #ffffff;
+  text-decoration: none;
+  padding: 12px 28px;
+  border-radius: 999px;
+  font-weight: bold;
+  transition: 0.3s;
 }
 
-.plant-info h3 {
-    margin: 0 0 10px;
-    font-size: 20px;
+.button:hover {
+  background: #b8000e;
 }
 
-/* ================================
-   🌿 狀態條
-==================================*/
-.stats {
-    margin-top: 10px;
+/* Footer */
+footer {
+  text-align: center;
+  padding: 30px;
+  color: #777;
+  background: #ffffff;
+  border-top: 1px solid #e5e5e5;
 }
 
-.stat-row {
-    display: flex;
-    align-items: center;
-    margin: 6px 0;
-    font-size: 14px;
+/* Progress Bar */
+.progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 5px;
+  background: #e60012;
+  width: 0%;
+  z-index: 9999;
 }
 
-.stat-row span {
-    width: 55px;
+/* Image Overlay */
+.image-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.82);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9998;
+  padding: 20px;
 }
 
-.bar {
-    flex: 1;
-    height: 10px;
-    border-radius: 10px;
-    background: #e3e3e3;
-    margin: 0 8px;
+.image-overlay img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 12px;
 }
 
-.bar-fill {
-    height: 10px;
-    border-radius: 10px;
-    width: 0%;
+/* Top Button */
+.top-button {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  border: none;
+  background: #e60012;
+  color: white;
+  padding: 12px 16px;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: bold;
+  display: none;
 }
 
-.bar-fill.health { background: #A6B8A8; }
-.bar-fill.moisture { background: #D7C7A3; }
-.bar-fill.light { background: #B8C7D9; }
-.bar-fill.temp { background: #C7A7A1; }
-
-.today-row {
-    font-size: 15px;
-    margin-top: 8px;
-    display: flex;
-    justify-content: space-between;
+.top-button.show {
+  display: block;
 }
 
-/* ================================
-   🌿 詳細頁
-==================================*/
-.back-btn {
-    padding: 8px 15px;
-    background: #ddd;
-    border: none;
-    border-radius: 8px;
-    font-size: 16px;
-}
+/* Mobile */
+@media (max-width: 768px) {
+  .article {
+    margin: 0 15px 40px;
+    padding: 28px 22px;
+  }
 
-.detail-photo {
-    width: 100%;
-    height: 260px;
-    border-radius: 15px;
-    object-fit: cover;
-    margin: 15px 0;
-}
-
-#detailName {
+  .article h1 {
     font-size: 26px;
-    margin: 10px 0;
-}
+  }
 
-#detailStats {
-    background: #ffffff;
-    padding: 15px;
-    border-radius: 15px;
-    box-shadow: 0 4px 14px rgba(0,0,0,0.08);
-    margin-top: 10px;
-}
+  .article h2 {
+    font-size: 22px;
+  }
 
-.detail-actions {
-    margin-top: 20px;
-    display: flex;
-    gap: 10px;
-}
-
-.detail-actions button {
-    flex: 1;
-    padding: 12px;
+  .article p {
     font-size: 16px;
-    border-radius: 12px;
-    border: none;
-    background: #A7D89C;
-    color: #fff;
-}
+  }
 
-/* ================================
-   🌿 日記頁
-==================================*/
-.diary-hint {
-    font-size: 13px;
-    color: #777;
-    margin-top: 4px;
-}
-
-.calendar-grid {
-    margin-top: 15px;
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 6px;
-}
-
-.calendar-grid div {
-    background: #ffffff;
-    border-radius: 12px;
-    height: 60px;
-    padding: 5px;
-    font-size: 14px;
-    text-align: center;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.05);
-    cursor: pointer;
-}
-
-/* ================================
-   🌿 AI 分析頁
-==================================*/
-.analysis-photo {
-    width: 100%;
-    height: 240px;
-    border-radius: 15px;
-    object-fit: cover;
-    margin: 15px 0;
-}
-
-.analysis-box {
-    background: #ffffff;
-    padding: 15px;
-    border-radius: 15px;
-    box-shadow: 0 3px 12px rgba(0,0,0,0.08);
-    margin-bottom: 15px;
-}
-
-/* ================================
-   🌿 底部導航列
-==================================*/
-.bottom-nav {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    height: 65px;
-    background: #ffffff;
-    box-shadow: 0 -2px 10px rgba(0,0,0,0.08);
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-}
-
-.bottom-nav button {
-    background: none;
-    border: none;
-    font-size: 16px;
-    color: #4a4a4a;
-}
-
-/* ================================
-   🌿 日記彈窗
-==================================*/
-.popup.hidden { display: none; }
-
-.popup {
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.4);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 20;
-}
-
-.popup-box {
-    background: #ffffff;
-    padding: 20px;
-    border-radius: 15px;
-    width: 80%;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-}
-
-.popup-btns {
-    text-align: right;
-    margin-top: 15px;
-}
-
-/* ================================
-   🌿 新增：首頁功能卡片
-==================================*/
-.feature-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 16px;
-    margin: 20px 5px;
-}
-
-.feature-card {
-    background: #ffffff;
-    padding: 16px;
-    border-radius: 16px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-    cursor: pointer;
-}
-
-.primary-btn {
-    margin: 20px 5px 0;
-    padding: 14px;
-    width: calc(100% - 10px);
-    border: none;
-    border-radius: 14px;
-    background: #A7D89C;
-    color: #ffffff;
-    font-size: 16px;
-}
-
-/* ================================
-   🌿 新增：功能介紹彈窗
-==================================*/
-.modal {
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.45);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 50;
-}
-
-.modal.hidden {
-    display: none;
-}
-
-.modal-box {
-    background: #ffffff;
-    padding: 24px;
-    border-radius: 18px;
-    width: 85%;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+  header {
+    padding: 18px 20px;
+  }
 }
